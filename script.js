@@ -1,6 +1,7 @@
-const apiKey = "5ff47da2061790f8b741c71ce654627a";
+// Load recent cities from localStorage
 let recentCities = JSON.parse(localStorage.getItem('recentCities')) || [];
 
+// Event listener for DOM content loaded
 document.addEventListener('DOMContentLoaded', () => {
     updateRecentCities();
     if (recentCities.length > 0) {
@@ -9,12 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Event listener for Enter key press
 function handleKeyPress(event) {
     if (event.key === 'Enter') {
         getWeather();
     }
 }
 
+// Fetch and display weather data
 function getWeather() {
     const city = document.getElementById("cityInput").value.trim();
     if (!city) {
@@ -26,7 +29,8 @@ function getWeather() {
     hideError();
     hideWeather();
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    // Use the back-end endpoint instead of directly calling the API
+    const url = `/weather?city=${city}`;
 
     fetch(url)
         .then(response => {
