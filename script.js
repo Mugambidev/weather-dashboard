@@ -104,7 +104,7 @@ function getWindDirection(degrees) {
 }
 
 function addToRecentCities(city) {
-    // Remove if already exists
+    
     recentCities = recentCities.filter(c => c.toLowerCase() !== city.toLowerCase());
     // Add to beginning
     recentCities.unshift(city);
