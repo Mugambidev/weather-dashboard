@@ -29,8 +29,8 @@ function getWeather() {
     hideError();
     hideWeather();
 
-    // Use the back-end endpoint instead of directly calling the API
-    const url = `/weather?city=${city}`;
+    // Directly call the OpenWeatherMap API using the key from config.js
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${config.API_KEY}&units=metric`;
 
     fetch(url)
         .then(response => {
